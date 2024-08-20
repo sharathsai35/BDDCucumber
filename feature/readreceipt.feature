@@ -17,4 +17,8 @@ Feature: Forkout
 		And click on read recipt icon in group chat
 		And select the users
 		And click on send button
-		
+		And click on group
+		And group enters text message
+		And click on read recipt icon in group chat
+		And click on select all checkbox
+		And click on send button

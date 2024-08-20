@@ -327,5 +327,66 @@ public class login {
 		String forkout=driver.findElement(By.xpath("//span[@class='forkout-conversation-label-icon']")).getAttribute("class");
 		Assert.assertEquals("forkout-conversation-label-icon", forkout);
 	}
+	
+	@Then("click on read receipt icon in user chat")
+	public void click_on_read_receipt_icon_in_user_chat() throws InterruptedException {
+	  Thread.sleep(1000);
+	  driver.findElement(By.xpath("//div[@class='input-read-receipt-btn input-action-btn']")).click();
+	  Thread.sleep(1000);
+	}
 
+	@Then("validate the read receipt icon")
+	public void validate_the_read_receipt_icon() throws InterruptedException {
+		Thread.sleep(1000);
+		String readreceipt=driver.findElement(By.xpath("//div[@class='read-receipt-chat-button']")).getAttribute("class");
+		Assert.assertEquals("read-receipt-chat-button", readreceipt);
+	}
+
+	@Then("click on group")
+	public void click_on_group() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@data-name='desktop bridge']")).click();
+	}
+
+	@Then("group enters text message")
+	public void group_enters_text_message() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[@class='message-input']")).sendKeys("test");
+		Thread.sleep(1000);
+	}
+
+	@Then("click on read recipt icon in group chat")
+	public void click_on_read_recipt_icon_in_group_chat() throws InterruptedException {
+		Thread.sleep(1000);
+		 driver.findElement(By.xpath("//div[@class='input-read-receipt-btn input-action-btn']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("select the users")
+	public void select_the_users() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[@for='readReceipt-94-1']")).click();
+		Thread.sleep(1000);
+	}
+	
+	@Then("click on select all checkbox")
+	public void click_on_select_all_checkbox() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[@for='readReceiptSelectAllCheckbox']")).click();
+		Thread.sleep(1000);
+	}
+	
+	@Then("click on code snippet icon")
+	public void click_on_code_snippet_icon() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@class='input-code-btn input-action-btn']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the code snippet")
+	public void validate_the_code_snippet() throws InterruptedException {
+		Thread.sleep(1000);
+		String codesnippet=driver.findElement(By.xpath("//div[@class='code-snippet-wrapper']")).getAttribute("class");
+		Assert.assertEquals("code-snippet-wrapper", codesnippet);
+	}
 }
