@@ -389,4 +389,23 @@ public class login {
 		String codesnippet=driver.findElement(By.xpath("//div[@class='code-snippet-wrapper']")).getAttribute("class");
 		Assert.assertEquals("code-snippet-wrapper", codesnippet);
 	}
+
+	@Then("click on voice message icon")
+	public void click_on_voice_message_icon() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@class='input-microphone-btn input-action-btn']")).click();
+	}
+
+	@Then("record the voice message")
+	public void record_the_voice_message() throws InterruptedException {
+		driver.findElement(By.xpath("//input[@id='selectMicrophoneDeviceBtn']")).click();
+		Thread.sleep(5000);
+	}
+
+	@Then("validate the voice message")
+	public void validate_the_voice_message() throws InterruptedException {
+		Thread.sleep(1000);
+		String voicemessage=driver.findElement(By.xpath("//div[@class='audio-attachment-wrapper']")).getAttribute("class");
+		Assert.assertEquals("audio-attachment-wrapper", voicemessage);
+	}
 }

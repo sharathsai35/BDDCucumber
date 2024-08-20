@@ -1,7 +1,7 @@
-Feature: Forkout
+Feature: Code snippet
 
   @tag1
-  Scenario: Forkout with users and groups conversation
+  Scenario: Code snippet message
     Given user has navigated to login page
     When user enters valid email address "android@tm.com" into email field
     And user entered valid password "123456" into password field
