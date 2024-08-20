@@ -14,7 +14,7 @@ public class Myhooks {
 	WebDriver driver;
 	@Before
 	public void setup() throws InterruptedException{
-		driver=Browser.Launching_Browser("Chrome");
+		driver= Browser.Launching_Browser("Chrome");
 		driver= Browser.getDriver();
 	}
 

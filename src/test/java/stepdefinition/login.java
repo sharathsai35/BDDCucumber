@@ -3,8 +3,11 @@ package stepdefinition;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import browser.Browser;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -91,7 +94,238 @@ public class login {
 	public void user_should_get_a_proper_warning_message_about_password_required() throws InterruptedException {
 		Thread.sleep(1000);
 		Assert.assertEquals("Password is required!",driver.findElement(By.xpath("//input[@data-original-title='Password is required!']")).getAttribute("data-original-title"));
-
 		Thread.sleep(1000);
 	}
+	@Then("click on user")
+	public void click_on_user() throws InterruptedException {
+		driver.findElement(By.xpath("//div[@data-name='kirancucumtest3']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("user enters text message")
+	public void user_enters_text_message() throws InterruptedException {
+		driver.findElement(By.xpath("//span[@class='message-input']")).sendKeys("test");
+		Thread.sleep(1000);
+	}
+
+	@Then("click on send button")
+	public void click_on_send_button() throws InterruptedException {
+		driver.findElement(By.xpath("//span[@id='sendMessageBtn']")).click();
+		Thread.sleep(1000);
+	}
+
+	@And("validate the msg")
+	public void validate_the_msg() throws InterruptedException {
+		Thread.sleep(1000);
+		String aa=driver.findElement(By.xpath("//span[@class='received-message-text']")).getText();
+		Assert.assertEquals("test" , aa );
+	}
+
+	@Then("click on rightclick")
+	public void click_on_rightclick() {
+		Actions ac=new Actions(driver);
+		WebElement e=driver.findElement(By.xpath("//div[@class='conversation-message']"));
+		ac.contextClick(e).perform();
+	}
+
+	@Then("click on forward")
+	public void click_on_forward() {
+		driver.findElement(By.xpath("//a[@data-action='forward']")).click();
+	}
+
+	@Then("click on forward button")
+	public void click_on_forward_button() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[@id='forwardMessageSendBtn']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("select the users and groups")
+	public void select_the_users_and_groups() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[@for='forwardUser_1568-2']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("click on send button in forward page")
+	public void click_on_send_button_in_forward_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@id='modalForwardSendMessageBtn']")).click();
+		Thread.sleep(1000);
+	}
+	
+	@Then("click on recall")
+	public void click_on_recall() throws InterruptedException {
+	  Thread.sleep(1000);
+	  driver.findElement(By.xpath("//a[@data-action='recall']")).click();
+	  Thread.sleep(1000);
+	}
+
+	@Then("click on recall button")
+	public void click_on_recall_button() throws InterruptedException {
+		  Thread.sleep(1000);
+		  driver.findElement(By.xpath("//span[@id='recallMessageSendBtn']")).click();
+		  Thread.sleep(1000);
+	}
+
+	@Then("click on yes button in popup msg")
+	public void click_on_yes_button_in_popup_msg() throws InterruptedException {
+		  Thread.sleep(1000);
+		  driver.findElement(By.xpath("//input[@id='recallConfirmationYesBtn']")).click();
+		  Thread.sleep(1000);
+	}
+	
+	@Then("validate the recall msg")
+	public void validate_the_recall_msg() throws InterruptedException {
+		Thread.sleep(1000);
+		Assert.assertEquals("Message Recalled!", driver.findElement(By.xpath("//div[@id='snackbar']")).getText());
+		String recall= driver.findElement(By.xpath("//div[@class='recall-conversation-text']")).getText();
+		Assert.assertEquals("You recalled this message", recall);
+		Thread.sleep(1000);
+	}
+	@Then("click on delete")
+	public void click_on_delete() throws InterruptedException {
+		 Thread.sleep(1000);
+		  driver.findElement(By.xpath("//a[@data-action='delete']")).click();
+		  Thread.sleep(1000);
+	}
+
+	@Then("click on delete button")
+	public void click_on_delete_button() throws InterruptedException {
+		 Thread.sleep(1000);
+		  driver.findElement(By.xpath("//span[@id='deleteMessageSendBtn']")).click();
+		  Thread.sleep(1000);
+	}
+
+	@Then("click on yes button in delete popup msg")
+	public void click_on_yes_button_in_delete_popup_msg() throws InterruptedException {
+		 Thread.sleep(1000);
+		  driver.findElement(By.xpath("//input[@id='deleteConfirmationYesBtn']")).click();
+		  Thread.sleep(1000);
+	}
+
+	@Then("validate the toast msg of delete")
+	public void validate_the_toast_msg_of_delete() throws InterruptedException {
+		Thread.sleep(1000);
+		Assert.assertEquals("Message Deleted!", driver.findElement(By.xpath("//div[@id='snackbar']")).getText());
+	}
+	
+	@Then("click on edit")
+	public void click_on_edit() throws InterruptedException {
+		 Thread.sleep(1000);
+		  driver.findElement(By.xpath("//a[@data-action='edit']")).click();
+		  Thread.sleep(1000);
+	}
+
+	@Then("Edit the message")
+	public void edit_the_message() {
+	   String editcon=driver.findElement(By.xpath("//div[@class='chat-edit-message-wrapper']")).getText();
+	   Assert.assertEquals("Me\n"
+	   		+ "test", editcon);
+	}
+
+	@Then("validate the edited icon")
+	public void validate_the_edited_icon() {
+		String editicon=driver.findElement(By.xpath("//span[@class='edited-conversation-icon']")).getAttribute("class");
+		Assert.assertEquals("edited-conversation-icon", editicon);
+	}
+	
+	@Then("click on copy")
+	public void click_on_copy() throws InterruptedException {
+		 Thread.sleep(1000);
+		  driver.findElement(By.xpath("//a[@data-action='copy']")).click();
+		  Thread.sleep(1000);
+	}
+
+	@Then("click on copy button")
+	public void click_on_copy_button() throws InterruptedException {
+		  Thread.sleep(1000);
+	   driver.findElement(By.xpath("//span[@id='copyMessageSendBtn']")).click();
+	}
+
+	@Then("validate the toast msg of copy")
+	public void validate_the_toast_msg_of_copy() throws InterruptedException {
+//		Thread.sleep(2000);  
+//		Assert.assertEquals("Copied !", driver.findElement(By.xpath("//div[@id='snackbar']")).getText());
+	}
+	
+	@Then("click on reply")
+	public void click_on_reply() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//a[@data-action='reply']")).click();
+	}
+	
+	@Then("validate reply con")
+	public void validate_reply_con() throws InterruptedException {
+	   Thread.sleep(1000);
+	   String reply=driver.findElement(By.xpath("//div[@class='chat-reply-message-wrapper']")).getAttribute("class");
+	   Assert.assertEquals("chat-reply-message-wrapper", reply);
+	}
+	
+	@Then("click on flag")
+	public void click_on_flag() throws InterruptedException {
+		  Thread.sleep(1000);
+		   driver.findElement(By.xpath("//a[@data-action='flag']")).click();
+	}
+
+	@Then("validate flag icon")
+	public void validate_flag_icon() throws InterruptedException {
+	   Thread.sleep(1000);
+	   String flag=driver.findElement(By.xpath("//span[@class='flag-conversation-label-icon']")).getAttribute("class");
+	   Assert.assertEquals("flag-conversation-label-icon", flag);
+	}
+	
+	@Then("click on pin")
+	public void click_on_pin() throws InterruptedException {
+		  Thread.sleep(1000);
+		   driver.findElement(By.xpath("//a[@data-action='pin']")).click();
+	}
+
+	@Then("validate pin icon")
+	public void validate_pin_icon() throws InterruptedException {
+		  Thread.sleep(1000);
+		   String flag=driver.findElement(By.xpath("//span[@class='pin-conversation-label-icon']")).getAttribute("class");
+		   Assert.assertEquals("pin-conversation-label-icon", flag);
+	}
+	
+	@Then("click on info")
+	public void click_on_info() throws InterruptedException {
+		  Thread.sleep(1000);
+		   driver.findElement(By.xpath("//a[@data-action='info']")).click();
+	}
+
+	@Then("validate info page")
+	public void validate_info_page() throws InterruptedException {
+		Thread.sleep(1000);
+	   String info= driver.findElement(By.xpath("//div[@class='message-info-wrapper']")).getAttribute("class");
+	   Assert.assertEquals("message-info-wrapper", info);
+	}
+	
+	@Then("click on close button")
+	public void click_on_close_button() throws InterruptedException {
+		 Thread.sleep(1000);
+		   driver.findElement(By.xpath("//span[@id='messageInfoModalCloseBtn']")).click();
+		   Thread.sleep(1000);
+	}
+	
+	@Then("click on forkout icon")
+	public void click_on_forkout_icon() throws InterruptedException {
+	  Thread.sleep(1000);
+	  driver.findElement(By.xpath("//div[@class='input-forkout-btn input-action-btn']")).click();
+	}
+	
+	@Then("select the users and groups in forkout")
+	public void select_the_users_and_groups_in_forkout() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[@for='forkoutUser-1-50-1']")).click();
+		driver.findElement(By.xpath("//label[@for='forkoutUser-1-1568-2']")).click();
+	}
+	
+	@Then("Validate the forkout icon with msg")
+	public void validate_the_forkout_icon_with_msg() throws InterruptedException {
+		Thread.sleep(1000);
+		String forkout=driver.findElement(By.xpath("//span[@class='forkout-conversation-label-icon']")).getAttribute("class");
+		Assert.assertEquals("forkout-conversation-label-icon", forkout);
+	}
+
 }
