@@ -408,4 +408,124 @@ public class login {
 		String voicemessage=driver.findElement(By.xpath("//div[@class='audio-attachment-wrapper']")).getAttribute("class");
 		Assert.assertEquals("audio-attachment-wrapper", voicemessage);
 	}
+
+	@Then("click on dashboard")
+	public void click_on_dashboard() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@data-app='dashboard']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("click on add group tab")
+	public void click_on_add_group_tab() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.switchTo().frame(0);
+		driver.findElement(By.xpath("//div[@data-tab='7']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("click on add group button")
+	public void click_on_add_group_button() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@id='createGroupBtn']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("Enter group name")
+	public void enter_group_name() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='groupNameInput']")).sendKeys("group dashboard");
+		Thread.sleep(1000);
+	}
+
+	@Then("enter description")
+	public void enter_description() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='groupDescriptionInput']")).sendKeys("automation testing group");
+		Thread.sleep(1000);
+	}
+
+	@Then("select the users in add group page")
+	public void select_the_users_in_add_group_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@data-username='Amit Bhatia']")).click();
+		driver.findElement(By.xpath("//div[@data-username='Browser']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("click on create")
+	public void click_on_create() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='createGroupSubmitBtn']")).click();
+	}
+
+	@Then("validate the toast msg of adding group")
+	public void validate_the_toast_msg_of_adding_group() throws InterruptedException {
+		Thread.sleep(1000);
+		String addgroup=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Group created successfully", addgroup);
+	}
+	
+	@Then("Dont enter the group name")
+	public void dont_enter_the_group_name() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='groupNameInput']")).sendKeys("");
+	}
+
+	@Then("validate the toast msg of without entering group name")
+	public void validate_the_toast_msg_of_without_entering_group_name() throws InterruptedException {
+		Thread.sleep(1000);
+		String addgroup=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Please enter group name", addgroup);
+	}
+	
+	@Then("Dont select the users")
+	public void dont_select_the_users() throws InterruptedException {
+	   Thread.sleep(1000);
+	}
+	
+	@Then("validate the toast msg of without adding users")
+	public void validate_the_toast_msg_of_without_adding_users() throws InterruptedException {
+		Thread.sleep(1000);
+		String addgroup=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Minimum 1 users are required for creating a group!", addgroup);
+	}
+	
+	@Then("click on airtime group button")
+	public void click_on_airtime_group_button() throws InterruptedException {
+	  Thread.sleep(1000);
+	  driver.findElement(By.xpath("//label[@for='airtimeGroupCheckbox']")).click();
+	}
+	
+	@Then("Enter group name with more than firty characters")
+	public void enter_group_name_with_more_than_firty_characters() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//input[@id='groupNameInput']")).sendKeys("daf dsaf dfas fasdf dsaf dsaf dfs fdsf dsfds fdf dsaf dsf dsaf fdsafsdf fdsaffdsf dsaf dsfdf sdf sfdsdf fsadegfgfgb dvxgg fgag");
+	}
+	
+	@Then("validate the toast msg of adding group with more than firty characters")
+	public void validate_the_toast_msg_of_adding_group_with_more_than_firty_characters() throws InterruptedException {
+		Thread.sleep(1000);
+		String addgroup=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Group Name should be maximum of 50 characters", addgroup);
+	}
+	
+	@Then("click on profile pic")
+	public void click_on_profile_pic() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//*[@id=\"groupAttachment\"]")).click();
+	   Thread.sleep(1000);
+	}
+
+	@Then("attach the attachment")
+	public void attach_the_attachment() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+	
+	@Then("validate the profile pic")
+	public void validate_the_profile_pic() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
 }
