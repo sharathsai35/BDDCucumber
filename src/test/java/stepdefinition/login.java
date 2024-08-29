@@ -513,6 +513,7 @@ public class login {
 	@Then("click on profile pic")
 	public void click_on_profile_pic() throws InterruptedException {
 	   Thread.sleep(1000);
+	   driver.switchTo().frame(0);
 	   driver.findElement(By.xpath("//*[@id=\"groupAttachment\"]")).click();
 	   Thread.sleep(1000);
 	}
