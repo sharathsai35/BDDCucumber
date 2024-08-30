@@ -5,7 +5,9 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="./feature/addgroupindashboard.feature",
+@CucumberOptions(features="./feature/adduser.feature",
+//@CucumberOptions(features="./feature/addgroupinrecentchatpage.feature",
+//@CucumberOptions(features="./feature/addgroupindashboard.feature",
 //@CucumberOptions(features = "./feature/voicemessage.feature",
 //@CucumberOptions(features = "./feature/codesnippet.feature",
 //@CucumberOptions(features = "./feature/readreceipt.feature",
@@ -14,7 +16,7 @@ import io.cucumber.junit.CucumberOptions;
 //@CucumberOptions(features = "./feature/login3.feature",
 glue = { "stepdefinition", "hooks" },
 publish = true,
-plugin= {"pretty","html:target/loginpage/addgroupindashboard.html"}
+plugin= {"pretty","html:target/loginpage/adduser.html"}
 )
 public class MyRunner {
 
