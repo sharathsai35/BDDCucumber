@@ -414,6 +414,7 @@ public class login {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//div[@data-app='dashboard']")).click();
 		Thread.sleep(1000);
+		driver.switchTo().frame(0);
 	}
 
 	@Then("click on add group tab")
@@ -670,15 +671,15 @@ public class login {
 		Thread.sleep(1000);	
 	}
 
-	//	@And("click on remove button")
-	//	public void click_on_remove_button() throws InterruptedException {
-	//		Thread.sleep(1000);
-	//		WebElement a=driver.findElement(By.xpath("(//div[@data-removestatus=1])[1]"));
-	//		Actions act=new Actions(driver);
-	//		act.moveToElement(a).build().perform();
-	//        Thread.sleep(500);
-	//        driver.findElement(By.xpath("//span[@class='remove-selected-group-user']")).click();
-	//	}
+	@And("click on remove button")
+	public void click_on_remove_button() throws InterruptedException {
+		Thread.sleep(1000);
+		WebElement a=driver.findElement(By.xpath("(//div[@data-removestatus=1])[1]"));
+		Actions act=new Actions(driver);
+		act.moveToElement(a).build().perform();
+		Thread.sleep(500);
+		driver.findElement(By.xpath("//span[@class='remove-selected-group-user']")).click();
+	}
 
 	@Then("it should remove the selected user")
 	public void it_should_remove_the_selected_user() throws InterruptedException {
@@ -844,7 +845,7 @@ public class login {
 	public void Validate_the_profile_pic_in_add_group() throws InterruptedException {
 		Thread.sleep(1000);
 	}
-	
+//Add user & Add user with optional details & Add Orange user	
 	@Then("click on add user button")
 	public void click_on_add_user_button() throws InterruptedException {
 	 Thread.sleep(1000);
@@ -1090,6 +1091,949 @@ public class login {
 	public void click_on_role_checkbox() throws InterruptedException {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//input[@id='customRoleCheckBox-15']")).click();
+	}
+//Edit user
+	@Then("click on 3 dots in add user")
+	public void click_on_3_dots_in_add_user() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.switchTo().frame(0);
+	   driver.findElement(By.xpath("(//div[@class='member-options-button'])[3]")).click();
+	   Thread.sleep(1000);
+	}
+
+	@Then("click on edit button")
+	public void click_on_edit_button() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//div[@class='member-option'])[10]")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the edit user page")
+	public void validate_the_edit_user_page() throws InterruptedException {
+	    Thread.sleep(1000);
+	    String edituser=driver.findElement(By.xpath("(//span[@class='header-text'])[1]")).getText();
+	    Assert.assertEquals("EDIT USER", edituser);
+	}
+	
+	@Then("clear the username and edit the user name")
+	public void clear_the_username_and_edit_the_user_name() throws InterruptedException {
+	  Thread.sleep(1000);
+	  driver.findElement(By.xpath("//input[@id='addMemberNameInput']")).clear();
+	  driver.findElement(By.xpath("//input[@id='addMemberNameInput']")).sendKeys("Amit Bhatia");
+	}
+
+	@Then("click on save employee")
+	public void click_on_save_employee() throws InterruptedException {
+	  Thread.sleep(1000);
+	  driver.findElement(By.xpath("//input[@id='addMemberSubmitBtn']")).click();
+	}
+
+	@Then("validate the edited user toast msg")
+	public void validate_the_edited_user_toast_msg() throws InterruptedException {
+		Thread.sleep(1000);
+		String editeduser=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Updated", editeduser);
+	}
+	
+	@Then("clear the email and edit the email")
+	public void clear_the_email_and_edit_the_email() throws InterruptedException {
+	  Thread.sleep(1000);
+	  driver.findElement(By.xpath("//input[@id='addMemberEmailInput']")).clear();
+	  driver.findElement(By.xpath("//input[@id='addMemberEmailInput']")).sendKeys("amit.bhatiya@tvisha.com");
+	}
+	
+	@Then("click on 3 dots in add user1")
+	public void click_on_3_dots_in_add_user1() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.switchTo().frame(0);
+		driver.findElement(By.xpath("(//div[@class='member-options-button'])[5]")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("click on edit button for selected user")
+	public void click_on_edit_button_for_selected_user() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//div[@class='member-option'])[16]")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("edit the department")
+	public void edit_the_department() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberDepartmentInput']")).clear();
+		Thread.sleep(500);
+		driver.findElement(By.xpath("//div[@class='optional-info-text']")).click();
+		Thread.sleep(500);
+		driver.findElement(By.xpath("//input[@id='addMemberDepartmentInput']")).click();
+		Thread.sleep(500);
+		driver.findElement(By.xpath("(//div[@data-text='Technical'])[1]")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("edit the designation")
+	public void edit_the_designation() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberDesignationInput']")).click();
+		Thread.sleep(500);
+		driver.findElement(By.xpath("//div[@data-text='Developer']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("edit the location")
+	public void edit_the_location() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberLocationInput']")).clear();
+		Thread.sleep(1000);
+//		driver.findElement(By.xpath("//div[@class='optional-info-text']")).click();
+		driver.findElement(By.xpath("//input[@id='addMemberLocationInput']")).click();
+		Thread.sleep(500);
+		driver.findElement(By.xpath("//div[@data-text='adsfds']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("edit the mobile number")
+	public void edit_the_mobile_number() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberMobileInput']")).clear();
+		Thread.sleep(500);
+		driver.findElement(By.xpath("//input[@id='addMemberMobileInput']")).sendKeys("9911991199");
+		Thread.sleep(1000);
+	}
+
+	@Then("edit the employee label")
+	public void edit_the_employee_label() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberLabelInput']")).clear();
+		driver.findElement(By.xpath("//input[@id='addMemberLabelInput']")).sendKeys("B.Tech");
+		Thread.sleep(1000);
+	}
+	
+	@Then("click on 3 dots in orange user")
+	public void click_on_3_dots_in_orange_user() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.switchTo().frame(0);
+		driver.findElement(By.xpath("(//div[@class='member-options-button'])[1]")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("click on edit button for orange user")
+	public void click_on_edit_button_for_orange_user() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//div[@class='member-option'])[2]")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("edit the orange username")
+	public void edit_the_orange_username() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberNameInput']")).clear();
+		driver.findElement(By.xpath("//input[@id='addMemberNameInput']")).sendKeys(".*");
+		Thread.sleep(1000);
+	}
+
+	@Then("Click on next button")
+	public void click_on_next_button() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberNextBtn']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("click on save button")
+	public void click_on_save_button() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberPermissionSubmitBtn']")).click();
+		Thread.sleep(1000);
+	}
+	
+	@Then("edit the orange user email")
+	public void edit_the_orange_user_email() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberEmailInput']")).clear();
+		driver.findElement(By.xpath("//input[@id='addMemberEmailInput']")).sendKeys("23@tm.com");
+		Thread.sleep(1000);
+	}
+	
+	@Then("click on view button")
+	public void click_on_view_button() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("(//div[@class='member-option'])[9]")).click();
+	   Thread.sleep(1000);
+	}
+
+	@Then("validate the view user page")
+	public void validate_the_view_user_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String view=driver.findElement(By.xpath("(//span[@class='header-text'])[1]")).getText();
+		Assert.assertEquals("VIEW USER", view);
+	}
+	
+	@Then("click on resend invite")
+	public void click_on_resend_invite() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//div[@class='member-option'])[11]")).click();
+		   Thread.sleep(1000);
+	}
+
+	@Then("validate the toast msg in resend invite")
+	public void validate_the_toast_msg_in_resend_invite() throws InterruptedException {
+		Thread.sleep(1000);
+		String view=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Mail sent successfully!", view);
+	}
+	
+	@Then("click on 3 dots in add user3")
+	public void click_on_3_dots_in_add_user3() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.switchTo().frame(0);
+		driver.findElement(By.xpath("(//div[@class='member-options-button'])[11]")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("click on deactivate button")
+	public void click_on_deactivate_button() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//div[@class='member-option'])[42]")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the toast msg for deactivated user")
+	public void validate_the_toast_msg_for_deactivated_user() throws InterruptedException {
+		Thread.sleep(1000);
+		String view=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Status updated successfully!", view);
+	}
+	
+	@Then("click on yes button in popup")
+	public void click_on_yes_button_in_popup() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//input[@class='btn btn-success btn-yes']")).click();
+	}
+	
+	@Then("click on no button in popup")
+	public void click_on_no_button_in_popup() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//input[@class='btn btn-success btn-no']")).click();
+	}
+	
+	@Then("validate the user")
+	public void validate_the_user() throws InterruptedException {
+		Thread.sleep(1000);
+	}
+	
+	@Then("click on dropdown of actions")
+	public void click_on_dropdown_of_actions() throws InterruptedException {
+	  Thread.sleep(1000);
+	  driver.switchTo().frame(0);
+	  driver.findElement(By.xpath("//select[@id='membersFilterAction']")).click();
+	  Thread.sleep(1000);
+	}
+
+	@Then("click on terminate")
+	public void click_on_terminate() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//option[text()='Terminate']")).click();
+	}
+
+	@Then("validate the toast msg for terminate")
+	public void validate_the_toast_msg_for_terminate() throws InterruptedException {
+		Thread.sleep(1000);
+		String terminate=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Please select atleast one employee", terminate);
+	}
+	
+	@Then("select the user checkbox")
+	public void select_the_user_checkbox() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.switchTo().frame(0);
+	   driver.findElement(By.xpath("(//div[@class='custom-checkbox-wrapper'])[7]")).click();
+	   Thread.sleep(1000);
+	}
+	
+	@Then("click on dropdown of action")
+	public void click_on_dropdown_of_action() throws InterruptedException {
+	  Thread.sleep(1000);
+	  driver.findElement(By.xpath("//select[@id='membersFilterAction']")).click();
+	  Thread.sleep(1000);
+	}
+
+	@Then("validate the toast msg for terminating the user")
+	public void validate_the_toast_msg_for_terminating_the_user() throws InterruptedException {
+		Thread.sleep(1000);
+		String terminate=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Status updated successfully!", terminate);
+	}
+	
+	@Then("select no in popup")
+	public void select_no_in_popup() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@class='btn btn-success btn-no']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("select yes in popup")
+	public void select_yes_in_popup() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@class='btn btn-success btn-yes']")).click();
+		Thread.sleep(1000);
+	}
+	
+	@Then("click on deactivate")
+	public void click_on_deactivate() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//option[text()='De-Activate']")).click();
+	}
+
+	@Then("validate the toast msg for deactivate")
+	public void validate_the_toast_msg_for_deactivate() throws InterruptedException {
+		Thread.sleep(1000);
+		String terminate=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Please select atleast one employee", terminate);
+	}
+
+	@Then("validate the toast msg for deactivating the user")
+	public void validate_the_toast_msg_for_deactivating_the_user() throws InterruptedException {
+		Thread.sleep(1000);
+		String terminate=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Status updated successfully!", terminate);
+	}
+//Search user list
+	@Then("click on search in user list page")
+	public void click_on_search_in_user_list_page() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//input[@id='membersFilterSearchInput']")).click();
+	   Thread.sleep(1000);
+	}
+
+	@Then("Enter the username in search")
+	public void enter_the_username_in_search() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='membersFilterSearchInput']")).sendKeys("browser");
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the searched user")
+	public void validate_the_searched_user() throws InterruptedException {
+		Thread.sleep(1000);
+		String user=driver.findElement(By.xpath("(//div[@class='table-row'])[2]")).getText();
+		Assert.assertEquals("1\n"
+				+ "BR\n"
+				+ "Browser - B.Tech\n"
+				+ "browser@tm.com\n"
+				+ "Developer\n"
+				+ "Android developer\n"
+				+ "adsfds", user);
+	}
+
+	@Then("Enter the orange name in search")
+	public void enter_the_orange_name_in_search() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='membersFilterSearchInput']")).sendKeys("orange");
+		Thread.sleep(1000);
+	}
+	
+	@Then("validate the searched orange user")
+	public void validate_the_searched_orange_user() throws InterruptedException {
+		Thread.sleep(1000);
+		String user=driver.findElement(By.xpath("(//div[@class='table-row'])[2]")).getText();
+		Assert.assertEquals("1\n"
+				+ "DO\n"
+				+ "Desktop Orange\n"
+				+ "desktop@orange.com\n"
+				+ "-\n"
+				+ "-\n"
+				+ "-", user);
+	}
+	
+	@Then("click on dropdown of users and orange members")
+	public void click_on_dropdown_of_users_and_orange_members() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//select[@id='membersFilterMembersSelection']")).click();
+	   Thread.sleep(1000);
+	}
+	@Then("select the users and orange members")
+	public void select_the_users_and_orange_members() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//option[text()='Users + Orange members']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the users and orange members")
+	public void validate_the_users_and_orange_members() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//option[text()='Users + Orange members']")).getText();
+		Assert.assertEquals("Users + Orange members", a);
+	}
+	
+	@Then("select the users in dropdown")
+	public void select_the_users_in_dropdown() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//option[text()='Users']")).click();
+	   Thread.sleep(1000);
+	}
+	
+	@Then("validate the users")
+	public void validate_the_users() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//option[text()='Users']")).getText();
+		Assert.assertEquals("Users", a);
+	}
+	
+	@Then("select the orange member in dropdown")
+	public void select_the_orange_member_in_dropdown() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//option[text()='Orange members']")).click();
+	   Thread.sleep(1000);
+	}
+	
+	@Then("validate the orange member")
+	public void validate_the_orange_member() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//option[text()='Orange members']")).getText();
+		Assert.assertEquals("Orange members", a);
+	}
+	
+	@Then("select the deactivated users and orange members in dropdown")
+	public void select_the_deactivated_users_and_orange_members_in_dropdown() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//option[text()='De-activated Users + Orange Members']")).click();
+	   Thread.sleep(1000);
+	}
+	
+	@Then("validate the deactivated users and orange members")
+	public void validate_the_deactivated_users_and_orange_members() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//option[text()='De-activated Users + Orange Members']")).getText();
+		Assert.assertEquals("De-activated Users + Orange Members", a);
+	}
+	
+	@Then("select the Ex users and Ex orange members in dropdown")
+	public void select_the_Ex_users_and_Ex_orange_members_in_dropdown() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//option[text()='Ex-users + Ex-orange Members']")).click();
+	   Thread.sleep(1000);
+	}
+	
+	@Then("validate the Ex users and Ex orange members")
+	public void validate_the_Ex_users_and_Ex_orange_members() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//option[text()='Ex-users + Ex-orange Members']")).getText();
+		Assert.assertEquals("Ex-users + Ex-orange Members", a);
+	}
+	
+	@Then("click on dropdown of department")
+	public void click_on_dropdown_of_department() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//select[@id='membersFilterDepartment']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("select the any department in dropdown")
+	public void select_the_any_department_in_dropdown() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//option[text()='IOS developer']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the department list")
+	public void validate_the_department_list() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@data-id='260']")).getText();
+		Assert.assertEquals("1\n"
+				+ "MD\n"
+				+ "Manoj Desai\n"
+				+ "manoj.desai@tvisha.com\n"
+				+ "Developer\n"
+				+ "IOS developer\n"
+				+ "Delhi", a);
+	}
+	
+	@Then("click on dropdown of designation")
+	public void click_on_dropdown_of_designation() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//select[@id='membersFilterDesignation']")).click();
+		Thread.sleep(1000);
+	}
+	
+	@Then("click on dropdown of designations")
+	public void click_on_dropdown_of_designations() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//select[@id='membersFilterDesignation']")).click();
+		Thread.sleep(1000);
+	}
+	
+	@Then("validate the designation list")
+	public void validate_the_designation_list() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//option[text()='Designation']")).getText();
+		Assert.assertEquals("Designation", a);
+	}
+
+	@Then("select the any designation in dropdown")
+	public void select_the_any_designation_in_dropdown() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//option[text()='Developer']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the department and designation users list")
+	public void validate_the_department_and_designation_users_list() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@data-id='260']")).getText();
+		Assert.assertEquals("1\n"
+				+ "MD\n"
+				+ "Manoj Desai\n"
+				+ "manoj.desai@tvisha.com\n"
+				+ "Developer\n"
+				+ "IOS developer\n"
+				+ "Delhi", a);
+	}
+	
+	@Then("click on dropdown of location")
+	public void click_on_dropdown_of_location() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//select[@id='membersFilterLocation']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("select the location")
+	public void select_the_location() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//option[text()='ab']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the location user list")
+	public void validate_the_location_user_list() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@data-id='232']")).getText();
+		Assert.assertEquals("1\n"
+				+ "Hari (Orange)\n"
+				+ "hari@orange.com\n"
+				+ "Software Engineer\n"
+				+ "Android developer\n"
+				+ "ab", a);
+	}
+	
+	@Then("select the department in dropdown")
+	public void select_the_department_in_dropdown() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//option[text()='Android developer']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("select the designation in dropdown")
+	public void select_the_designation_in_dropdown() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//option[text()='Developer']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("select the location in list")
+	public void select_the_location_in_list() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//option[text()='adsfds']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the combination user")
+	public void validate_the_combination_user() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@data-id='3']")).getText();
+		Assert.assertEquals("1\n"
+				+ "BR\n"
+				+ "Browser - B.Tech\n"
+				+ "browser@tm.com\n"
+				+ "Developer\n"
+				+ "Android developer\n"
+				+ "adsfds", a);
+	}
+	
+	@Then("click on refresh button")
+	public void click_on_refresh_button() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@class='reset-btn']")).click();
+		Thread.sleep(1000);
+    }
+
+	@Then("validate the search field")
+	public void validate_the_search_field() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//input[@id='membersFilterSearchInput']")).getText();
+		Assert.assertEquals("", a);
+	}
+//home page
+	@Then("click on home tab")
+	public void click_on_home_tab() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[text()='Home']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the home page")
+	public void validate_the_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='company-details-wrapper']")).getText();
+		Assert.assertEquals("Tvisha\n"
+				+ "Home Domain :\n"
+				+ "www.tm.com", a);
+	}
+	
+	@Then("click on user wrapper")
+	public void click_on_user_wrapper() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@class='info-wrapper green']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the users tab page")
+	public void validate_the_users_tab_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[text()='Users']")).getText();
+		Assert.assertEquals("Users", a);
+	}
+
+	@Then("click on orange member wrapper")
+	public void click_on_orange_member_wrapper() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@class='info-wrapper orange']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the orange member tab page")
+	public void validate_the_orange_member_tab_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//option[text()='Orange members']")).getText();
+		Assert.assertEquals("Orange members", a);
+	}
+	
+	@Then("click on Ex users and Ex orange member wrapper")
+	public void click_on_ex_users_and_ex_orange_member_wrapper() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@class='info-wrapper yellow']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the Ex users and Ex orange member tab page")
+	public void validate_the_ex_users_and_ex_orange_member_tab_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//option[text()='Ex-users + Ex-orange Members']")).getText();
+		Assert.assertEquals("Ex-users + Ex-orange Members", a);
+	}
+	
+	@Then("click on groups wrapper")
+	public void click_on_groups_wrapper() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@class='info-wrapper blue']")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the page")
+	public void validate_the_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[text()='Home']")).getText();
+		Assert.assertEquals("Home", a);
+	}
+
+	@Then("In exchange info change the dates")
+	public void in_exchange_info_change_the_dates() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@class='date-filter-wrapper']")).click();
+		Thread.sleep(500);
+		driver.findElement(By.xpath("(//div[@class='date-filter-option'])[6]")).click();
+		Thread.sleep(1000);
+	}
+
+	@Then("validate the dates")
+	public void validate_the_dates() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='exchange-info-container']")).getText();
+		Assert.assertEquals("EXCHANGE INFO\n"
+				+ "This Year\n"
+				+ "MESSAGES\n"
+				+ "2655\n"
+				+ "FILES\n"
+				+ "450\n"
+				+ "IMAGES\n"
+				+ "678\n"
+				+ "VIDEOS\n"
+				+ "266", a);
+	}
+
+	@Then("Add the user without entering data in home page")
+	public void add_the_user_without_entering_data_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMembersSubmitBtn']")).click();
+	}
+
+	@Then("validate the toast msg of without entering user data in home page")
+	public void validate_the_toast_msg_of_without_entering_user_data_in_home_page() throws InterruptedException {
+		Thread.sleep(500);
+		String a=driver.findElement(By.xpath("//input[@id='addMemberName']")).getAttribute("data-original-title");
+		Assert.assertEquals("Please enter name", a);
+	}
+	
+	@Then("Add the user without entering username in home page")
+	public void add_the_user_without_entering_username_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberName']")).sendKeys("test");
+		driver.findElement(By.xpath("//input[@id='addMembersSubmitBtn']")).click();
+	}
+
+	@Then("validate the toast msg of without entering username in home page")
+	public void validate_the_toast_msg_of_without_entering_username_in_home_page() throws InterruptedException {
+		Thread.sleep(500);
+		String a=driver.findElement(By.xpath("//input[@id='addMemberEmail']")).getAttribute("data-original-title");
+		Assert.assertEquals("Please enter email", a);
+	}
+	
+	@Then("Add the user with username and email in home page")
+	public void add_the_user_with_username_and_email_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberName']")).sendKeys("kumar21");
+		driver.findElement(By.xpath("//input[@id='addMemberEmail']")).sendKeys("kumar21@tm.com");
+	}
+	
+	@Then("Add the user with username1 and email1 in home page")
+	public void add_the_user_with_username1_and_email1_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberName']")).sendKeys("kumar20");
+		driver.findElement(By.xpath("//input[@id='addMemberEmail']")).sendKeys("kumar20@tm.com");
+	}
+	
+	@Then("Add the user with username2 and email2 in home page")
+	public void add_the_user_with_username2_and_email2_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberName']")).sendKeys("kumar19");
+		driver.findElement(By.xpath("//input[@id='addMemberEmail']")).sendKeys("kumar19@tm.com");
+	}
+	
+	@Then("Add the user with username3 and email3 in home page")
+	public void add_the_user_with_username3_and_email3_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberName']")).sendKeys("kumar18");
+		driver.findElement(By.xpath("//input[@id='addMemberEmail']")).sendKeys("kumar18@tm.com");
+	}
+	
+	@Then("click on add button in home page")
+	public void click_on_add_button_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMembersSubmitBtn']")).click();
+	}
+	
+	@Then("add the optional details")
+	public void add_the_optional_details() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//select[@id='addMemberDepartment']")).click();
+		driver.findElement(By.xpath("//option[text()='IOS developer']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//select[@id='addMemberDesignation']")).click();
+		driver.findElement(By.xpath("//option[text()='svs']")).click();
+		Thread.sleep(500);
+		driver.findElement(By.xpath("//select[@id='addMemberLocation']")).click();
+		driver.findElement(By.xpath("//option[text()='ab']")).click();
+		Thread.sleep(500);
+		driver.findElement(By.xpath("//input[@id='addMemberMobile']")).sendKeys("9999988882");
+		driver.findElement(By.xpath("//input[@id='addMemberLabel']")).sendKeys("TM-130");
+		Thread.sleep(500);
+	}
+	
+	@Then("validate the toast msg of added user in home page")
+	public void validate_the_toast_msg_of_added_user_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Employee added successfully", a);
+	}
+
+	@Then("click on checkbox of orange member")
+	public void click_on_checkbox_of_orange_member() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMemberOrangeMemberCheckbox']")).click();
+	}
+
+	@Then("click on add button for orange member")
+	public void click_on_add_button_for_orange_member() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addMembersSubmitBtn']")).click();
+	}
+
+	@Then("click on any role and add the user")
+	public void click_on_any_role_and_add_the_user() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='customRoleCheckBox-15']")).click();
+	}
+
+	@Then("Enter empty department name in home page")
+	public void enter_empty_department_name_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addDepartmentInput']")).sendKeys("");
+	}
+
+	@Then("click on add button for department name")
+	public void click_on_add_button_for_department_name() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addDepartmentSubmitBtn']")).click();
+	}
+
+	@Then("validate the toast msg of empty department name in home page")
+	public void validate_the_toast_msg_of_empty_department_name_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//input[@id='addDepartmentInput']")).getAttribute("data-original-title");
+		Assert.assertEquals("Please enter department", a);
+	}
+
+	@Then("Enter department name in home page")
+	public void enter_department_name_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addDepartmentInput']")).sendKeys("grtewersdf");
+	}
+
+	@Then("validate the toast msg of added department name in home page")
+	public void validate_the_toast_msg_of_added_department_name_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Department added successfully", a);
+	}
+
+	@Then("Enter empty designation name in home page")
+	public void enter_empty_designation_name_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='designationInput']")).sendKeys("");
+	}
+
+	@Then("click on add button for designation name")
+	public void click_on_add_button_for_designation_name() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addDesignationSubmitBtn']")).click();
+	}
+
+	@Then("validate the toast msg of empty designation name in home page")
+	public void validate_the_toast_msg_of_empty_designation_name_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//input[@id='designationInput']")).getAttribute("data-original-title");
+		Assert.assertEquals("Please enter designation", a);
+	}
+
+	@Then("Enter designation name in home page")
+	public void enter_designation_name_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='designationInput']")).sendKeys("testing06");
+	}
+
+	@Then("Donot select department name")
+	public void donot_select_department_name() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//select[@id='departmentSelection']"));
+	}
+
+	@Then("validate the toast msg of added designation name with empty department name in home page")
+	public void validate_the_toast_msg_of_added_designation_name_with_empty_department_name_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//select[@id='departmentSelection']")).getAttribute("data-original-title");
+		Assert.assertEquals("Please select department", a);
+	}
+
+	@Then("select department name")
+	public void select_department_name() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//select[@id='departmentSelection']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//option[text()='native developer'])[2]")).click();
+	}
+
+	@Then("validate the toast msg of added designation name in home page")
+	public void validate_the_toast_msg_of_added_designation_name_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Designation added successfully", a);
+	}
+
+	@Then("Donot Enter location detais in home page")
+	public void donot_enter_location_detais_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addLocationLabelInput']")).click();
+	}
+
+	@Then("click on add button for location name")
+	public void click_on_add_button_for_location_name() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addLocationSubmitBtn']")).click();
+	}
+
+	@Then("validate the toast msg of location details in home page")
+	public void validate_the_toast_msg_of_location_details_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//input[@id='addLocationLabelInput']")).getAttribute("data-original-title");
+		Assert.assertEquals("Please enter label", a);
+	}
+
+	@Then("Enter label name in location detais in home page")
+	public void enter_label_name_in_location_detais_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addLocationLabelInput']")).sendKeys("testing05");
+	}
+
+	@Then("Enter label1 name in location detais in home page")
+	public void enter_label1_name_in_location_detais_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addLocationLabelInput']")).sendKeys("testing06");
+	}
+	
+	@Then("validate the toast msg by entering label name in location details in home page")
+	public void validate_the_toast_msg_by_entering_label_name_in_location_details_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//input[@id='addLocationCityInput']")).getAttribute("data-original-title");
+		Assert.assertEquals("Please enter city", a);
+	}
+
+	@Then("Enter Address in location detais in home page")
+	public void enter_address_in_location_detais_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//textarea[@id='addLocationAddressInput']")).sendKeys("sdsad dada");
+	}
+
+	@Then("Donot Enter Address in location detais in home page")
+	public void donot_enter_address_in_location_detais_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//textarea[@id='addLocationAddressInput']")).sendKeys("");
+	}
+	
+	@Then("Enter city in location detais in home page")
+	public void enter_city_in_location_detais_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addLocationCityInput']")).sendKeys("hyd");
+	}
+
+	@Then("validate the toast msg by entering label and address and city in location details in home page")
+	public void validate_the_toast_msg_by_entering_label_and_address_and_city_in_location_details_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//input[@id='addLocationStateInput']")).getAttribute("data-original-title");
+		Assert.assertEquals("Please enter state", a);
+	}
+
+	@Then("Enter state in location detais in home page")
+	public void enter_state_in_location_detais_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addLocationStateInput']")).sendKeys("tel");
+	}
+
+	@Then("validate the toast msg by entering label and address and city and state in location details in home page")
+	public void validate_the_toast_msg_by_entering_label_and_address_and_city_and_state_in_location_details_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//input[@id='addLocationCountryInput']")).getAttribute("data-original-title");
+		Assert.assertEquals("Please enter country", a);
+	}
+
+	@Then("Enter country in location detais in home page")
+	public void enter_country_in_location_detais_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='addLocationCountryInput']")).sendKeys("Ind");
+	}
+
+	@Then("validate the toast msg by entering location details in home page")
+	public void validate_the_toast_msg_by_entering_location_details_in_home_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Location Added successfully", a);
 	}
 
 }
