@@ -1,5 +1,11 @@
 package stepdefinition;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -2036,4 +2042,463 @@ public class login {
 		Assert.assertEquals("Location Added successfully", a);
 	}
 
+	//Personal settings
+	@Then("click on personal settings tab")
+	public void click_on_personal_settings_tab() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div[3]/div[1]/div[4]/span[1]")).click();
+	}
+
+	@Then("click on profile")
+	public void click_on_profile() throws InterruptedException {
+		Thread.sleep(1000);
+		//driver.findElement(By.xpath("//div[@class='messenger-settings-tab active']")).click();
+		driver.findElement(By.xpath("//span[text()='Profile']")).click();
+	}
+
+	@Then("validate the profile page")
+	public void validate_the_profile_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='messenger-settings-tab-content']")).getText();
+		Assert.assertEquals("Android\n"
+				+ "upload an image\n"
+				+ "designation\n"
+				+ "Developer\n"
+				+ "email\n"
+				+ "android@tm.com\n"
+				+ "mobile\n"
+				+ "N/A\n"
+				+ "company\n"
+				+ "Tvisha\n"
+				+ "location\n"
+				+ "Hyderabad", a);
+	}
+	
+	@Then("click on upload image")
+	public void click_on_upload_image() throws InterruptedException, AWTException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@id='uploadProfilePic']")).click();
+		Thread.sleep(1000);
+		Robot rb=new Robot();
+		StringSelection str = new StringSelection("/home/tvisha/Documents/1700560707012.jpg");
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
+		Thread.sleep(2000);
+		rb.keyPress(KeyEvent.VK_CONTROL);
+		rb.keyPress(KeyEvent.VK_V);
+
+		// release Control+V for pasting
+		rb.keyRelease(KeyEvent.VK_CONTROL);
+		rb.keyRelease(KeyEvent.VK_V);
+		// for pressing and releasing Enter
+		rb.keyPress(KeyEvent.VK_ENTER);
+		rb.keyRelease(KeyEvent.VK_ENTER);
+		driver.findElement(By.xpath("//input[@id='userAvatarSaveBtn']")).click();
+		Thread.sleep(3000);
+	}
+	
+	@Then("validate the profile page of user")
+	public void validate_the_profile_page_of_user() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Profile pic updated successfully!", a);
+	}
+	
+	@Then("Remove the image")
+	public void remove_the_image() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@id='removeProfilePic']")).click();
+	}
+
+	@Then("validate the toast msg of removed avatar")
+	public void validate_the_toast_msg_of_removed_avatar() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Avatar removed", a);
+	}
+	
+	@Then("click on change password")
+	public void click_on_change_password() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//span[text()='Change Password']")).click();
+	}
+	
+	@Then("click on save button in change password")
+	public void click_on_save_button_in_change_password() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@id='savePasswordButton']")).click();
+	}
+
+	@Then("validate the toast msg of change password")
+	public void validate_the_toast_msg_of_change_password() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Enter old password", a);
+	}
+	
+	@Then("Enter old password")
+	public void enter_old_password() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//input[@id='settingsOldPasswordInput']")).sendKeys("123456");
+	}
+	
+	@Then("validate the toast msg by entering old password")
+	public void validate_the_toast_msg_by_entering_old_password() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Enter new password", a);
+	}
+	
+	@Then("Enter new password")
+	public void enter_new_password() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//input[@id='settingsNewPasswordInput']")).sendKeys("654321");
+	}
+	
+	@Then("validate the toast msg by entering old and new password")
+	public void validate_the_toast_msg_by_entering_old_and_new_password() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Passwords doesn't match", a);
+	}
+	
+	@Then("Enter confirm password")
+	public void enter_confirm_password() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//input[@id='settingsConfirmPasswordInput']")).sendKeys("654321");
+	}
+	
+	@Then("Enter invalid old password")
+	public void enter_invalid_old_password() throws InterruptedException {
+	   Thread.sleep(1000);
+	   driver.findElement(By.xpath("//input[@id='settingsOldPasswordInput']")).sendKeys("321654");
+	}
+	
+	@Then("validate the toast msg by entering invalid old password")
+	public void validate_the_toast_msg_by_entering_invalid_old_password() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Invalid Old Password", a);
+	}
+	
+	@Then("Enter new password with same old password")
+	public void enter_new_password_with_same_old_password() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='settingsNewPasswordInput']")).sendKeys("123456");
+	}
+
+	@Then("Enter confirm password with same old password")
+	public void enter_confirm_password_with_same_old_password() throws InterruptedException {
+		 Thread.sleep(1000);
+		 driver.findElement(By.xpath("//input[@id='settingsConfirmPasswordInput']")).sendKeys("123456");
+	}
+
+	@Then("validate the toast msg by entering same old and new and confirm password")
+	public void validate_the_toast_msg_by_entering_same_old_and_new_and_confirm_password() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Nothing to update", a);
+	}
+	
+	@Then("Enter old password with less than 6 characters")
+	public void enter_old_password_with_less_than_6_characters() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='settingsOldPasswordInput']")).sendKeys("123");
+	}
+
+	@Then("Enter new password with less than 6 characters")
+	public void enter_new_password_with_less_than_6_characters() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='settingsNewPasswordInput']")).sendKeys("123");
+	}
+
+	@Then("Enter confirm password with less than 6 characters")
+	public void enter_confirm_password_with_less_than_6_characters() throws InterruptedException {
+		 Thread.sleep(1000);
+		 driver.findElement(By.xpath("//input[@id='settingsConfirmPasswordInput']")).sendKeys("123");
+	}
+
+	@Then("validate the toast msg by entering password with less than 6 characters")
+	public void validate_the_toast_msg_by_entering_password_with_less_than_6_characters() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Password should contain atleast 6 characters", a);
+	}
+	
+	@Then("Enter invalid confirm password")
+	public void enter_invalid_confirm_password() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='settingsConfirmPasswordInput']")).sendKeys("123456");
+	}
+
+	@Then("validate the toast msg by entering password invalid confirm password")
+	public void validate_the_toast_msg_by_entering_password_invalid_confirm_password() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Passwords doesn't match", a);
+	}
+	
+	@Then("validate the toast msg by entering valid password")
+	public void validate_the_toast_msg_by_entering_valid_password() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Password Changed Successfully", a);
+	}
+	
+	@Then("click on Activity")
+	public void click_on_activity() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//span[text()='Activity'])[2]")).click();
+	}
+	
+	@Then("validate the activity page")
+	public void validate_the_activity_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='messenger-settings-tab-content']")).getText();
+		Assert.assertEquals("Active Devices\n"
+				+ "logout from all devices\n"
+				+ "Browser\n"
+				+ "Usage\n"
+				+ "Messages\n"
+				+ "1.89 K / 165.88 KB\n"
+				+ "Images & Videos\n"
+				+ "409 / 618.79 MB\n"
+				+ "Files\n"
+				+ "209 / 863.57 MB", a);
+	}
+
+	@Then("click on logout icon")
+	public void click_on_logout_icon() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@class='active-device-logout-btn']")).click();
+	}
+
+	@Then("validate the tm page")
+	public void validate_the_tm_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//link[@href='http://192.168.2.55:8081/']")).getAttribute("href");
+		Assert.assertEquals("http://192.168.2.55:8081/", a);
+	}
+	
+	@Then("click on logout from all devices button")
+	public void click_on_logout_from_all_devices_button() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[@id='settingsLogoutAllDevices']")).click();
+	}
+	
+	@Then("click on wallpapers")
+	public void click_on_wallpapers() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//span[text()='Wallpapers'])")).click();
+	}
+
+	@Then("validate the wallpapers page")
+	public void validate_the_wallpapers_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='messenger-settings-right-panel']")).getText();
+		Assert.assertEquals("Reaching the Skies, Tallest Tower\n"
+				+ "Search Category\n"
+				+ "Classic\n"
+				+ "Corporate\n"
+				+ "Floral\n"
+				+ "Fun\n"
+				+ "Meeting\n"
+				+ "Travel\n"
+				+ "Pet-Lovers\n"
+				+ "Serene Sea Side\n"
+				+ "Abstract\n"
+				+ "Celebration\n"
+				+ "Music\n"
+				+ "Default", a);
+	}
+	
+	@Then("click on search in wallpapers and Enter valid search")
+	public void click_on_search_in_wallpapers_and_enter_valid_text() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='wallpaperSearchInput']")).sendKeys("beach");
+	}
+
+	@Then("validate the searched wallpaper")
+	public void validate_the_searched_wallpaper() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='messenger-wallpapers-wrapper']")).getText();
+		Assert.assertEquals("", a);
+	}
+	
+	@Then("click on search in wallpapers and Enter invalid search")
+	public void click_on_search_in_wallpapers_and_enter_invalid_search() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//input[@id='wallpaperSearchInput']")).sendKeys("test");
+	}
+	
+	@Then("click on apply button for wallpaper")
+	public void click_on_apply_button_for_wallpaper() throws InterruptedException {
+		Thread.sleep(1000);
+		WebElement e=driver.findElement(By.xpath("//div[@data-name='Butterflies']"));
+		Actions ac=new Actions(driver);
+		ac.moveToElement(e).perform();
+		driver.findElement(By.xpath("(//span[@class='apply-wallpaper'])[2]")).click();
+	}
+
+	@Then("validate the toast msg wallpaper")
+	public void validate_the_toast_msg_wallpaper() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Applied Successfully!", a);
+	}
+
+	@Then("click on select category dropdown")
+	public void click_on_select_category_dropdown() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//select[@id='searchCategory']")).click();
+	}
+
+	@Then("select the any name in dropdown")
+	public void select_the_any_name_in_dropdown() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//option[text()='Classic']")).click();
+	}
+
+	@Then("click on apply button for wallpaper of selected dropdown")
+	public void click_on_apply_button_for_wallpaper_of_selected_dropdown() throws InterruptedException {
+		Thread.sleep(1000);
+		WebElement e=driver.findElement(By.xpath("//div[@data-name='Plain white']"));
+		Actions ac=new Actions(driver);
+		ac.moveToElement(e).perform();
+		driver.findElement(By.xpath("(//span[@class='apply-wallpaper'])[3]")).click();
+	}
+	
+	@Then("click on apply button for searched wallpaper")
+	public void click_on_apply_button_for_searched_wallpaper() throws InterruptedException {
+		Thread.sleep(1000);
+		WebElement e=driver.findElement(By.xpath("//div[@data-name='Beach']"));
+		Actions ac=new Actions(driver);
+		ac.moveToElement(e).perform();
+		driver.findElement(By.xpath("(//span[@class='apply-wallpaper'])[14]")).click();
+	}
+	
+	@Then("click on ibuzr")
+	public void click_on_ibuzr() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//span[text()='iBUZR'])")).click();
+	}
+
+	@Then("validate the iBUZR page")
+	public void validate_the_i_buzr_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='messenger-ibuzr-settings-container']")).getText();
+		Assert.assertEquals("Quick Response Panel\n"
+				+ "Show\n"
+				+ "enable/disable\n"
+				+ "CANNED RESPONSES LIST\n"
+				+ "add a tag and press Enter\n"
+				+ "hii\n"
+				+ "🙂\n"
+				+ "Tips:\n"
+				+ "*\n"
+				+ "When you double-click a Canned Response in Chat window - the message will be sent to the recipient once.\n"
+				+ "*\n"
+				+ "When you single-click a Canned Response in Chat window - the message will be added to message box.", a);
+	}
+
+	@Then("click on switch button to disable in ibuzr")
+	public void click_on_switch_button_in_ibuzr() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[7]")).click();
+	}
+
+	@Then("validate the toast msg of iBUZR")
+	public void validate_the_toast_msg_of_i_buzr() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='feedbackSection']")).getText();
+		Assert.assertEquals("Saved!", a);
+	}
+
+	@Then("click on switch button to enable in ibuzr")
+	public void click_on_switch_button_to_enable_in_ibuzr() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[7]")).click();
+	}
+
+	@Then("Enter canned msg text")
+	public void enter_canned_msg_text() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[@class='canned-message-input']")).sendKeys("test");
+	}
+	
+	@Then("click on add button in ibuzr")
+	public void click_on_add_button_in_ibuzr() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@class='add-canned-message-btn']")).click();
+	}
+	
+	@Then("Remove canned msg")
+	public void remove_canned_msg_text() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//span[@class='remove-canned-message'])[3]")).click();
+	}
+	
+	@Then("click on emoji button")
+	public void click_on_emoji_button() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@id='cannedMessageEmojiPreviewBtn']")).click();
+	}
+
+	@Then("Add the emojis")
+	public void add_the_emojis() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//span[@class='emojione emojione-32-travel _1f6e9 row-visible'])")).click();
+	}
+	
+	@Then("Remove the emojis")
+	public void remove_the_emojis() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//span[@class='remove-canned-message'])[3]")).click();
+	}
+	
+	@Then("move the canned msgs")
+	public void move_the_canned_msgs() throws InterruptedException {
+		Thread.sleep(1000);
+		WebElement e=driver.findElement(By.xpath("(//div[@class='added-canned-message-box-cell'])[1]"));
+		WebElement e1=driver.findElement(By.xpath("(//div[@class='added-canned-message-box-cell'])[5]"));
+		Actions ac=new Actions(driver);
+		ac.dragAndDrop(e, e1).perform();
+	}
+	
+	@Then("click on layout")
+	public void click_on_layout() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text()='Layout']")).click();
+	}
+
+	@Then("validate the layout page")
+	public void validate_the_layout_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='messenger-settings-tab-content']")).getText();
+		Assert.assertEquals("Left panel\n"
+				+ "Auto Adjust\n"
+				+ "(Default)\n"
+				+ "Broad Panel\n"
+				+ "Narrow Panel\n"
+				+ "On Large Screen\n"
+				+ "On Small Screen", a);
+	}
+	
+	@Then("change to board pannel")
+	public void change_to_board_pannel() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElements(By.xpath("(//span[@class='messenger-settings-custom-radio-checkmark'])")).get(14).click();
+	}
+	
+	@Then("change to narrow pannel")
+	public void change_to_narrow_pannel() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElements(By.xpath("(//span[@class='messenger-settings-custom-radio-checkmark'])")).get(15).click();
+	}
+	
+	@Then("change to auto adjust")
+	public void change_to_auto_adjust() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElements(By.xpath("(//span[@class='messenger-settings-custom-radio-checkmark'])")).get(13).click();
+	}
 }
+
