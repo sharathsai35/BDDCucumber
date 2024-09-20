@@ -2500,5 +2500,292 @@ public class login {
 		Thread.sleep(1000);
 		driver.findElements(By.xpath("(//span[@class='messenger-settings-custom-radio-checkmark'])")).get(13).click();
 	}
+	
+	@Then("click on tiles")
+	public void click_on_tiles() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text()='Tiles']")).click();
+	}
+
+	@Then("validate the tiles page")
+	public void validate_the_tiles_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='messenger-settings-tab-content']")).getText();
+		Assert.assertEquals("Tiles Display\n"
+				+ "Move\n"
+				+ "Hide/Show\n"
+				+ "Chat\n"
+				+ "Cattle Call\n"
+				+ "Admin Dashboard\n"
+				+ "Tm Monitor\n"
+				+ "Help\n"
+				+ "Personal Settings", a);
+	}
+	
+	@Then("switch the cattle call button to hide")
+	public void switch_the_cattle_call_button_to_hide() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[9]")).click();
+	}
+
+	@Then("validate the cattle call icon right side in tm app")
+	public void validate_the_cattle_call_icon_right_side_in_tm_app() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@data-app='conference']")).getAttribute("data-app");
+		Assert.assertEquals("conference", a);	
+	}
+	
+	@Then("switch the cattle call button to show")
+	public void switch_the_cattle_call_button_to_show() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[9]")).click();
+	}
+	
+	@Then("switch the admin dashboard button to hide")
+	public void switch_the_admin_dashboard_button_to_hide() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[10]")).click();
+	}
+
+	@Then("validate the admin dashboard icon right side in tm app")
+	public void validate_the_admin_dashboard_icon_right_side_in_tm_app() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@data-app='dashboard']")).getAttribute("data-app");
+		Assert.assertEquals("dashboard", a);	
+	}
+	
+	@Then("switch the admin dashboard button to show")
+	public void switch_the_admin_dashboard_button_to_show() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[10]")).click();
+	}
+	
+	@Then("switch the Tm monitor button to hide")
+	public void switch_the_Tm_monitor_button_to_hide() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[11]")).click();
+	}
+
+	@Then("validate the Tm monitor icon right side in tm app")
+	public void validate_the_Tm_monitor_icon_right_side_in_tm_app() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@data-app='tm-monitor']")).getAttribute("data-app");
+		Assert.assertEquals("tm-monitor", a);	
+	}
+	
+	@Then("switch the Tm monitor button to show")
+	public void switch_the_Tm_monitor_button_to_show() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[11]")).click();
+	}
+	
+	@Then("switch the help button to hide")
+	public void switch_the_help_button_to_hide() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[12]")).click();
+	}
+
+	@Then("validate the help icon right side in tm app")
+	public void validate_the_help_icon_right_side_in_tm_app() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@data-app='support']")).getAttribute("data-app");
+		Assert.assertEquals("support", a);
+	}
+
+	@Then("switch the help button to show")
+	public void switch_the_help_button_to_show() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[12]")).click();
+	}
+	
+	@Then("move the tabs")
+	public void move_the_tabs() throws InterruptedException {
+		Thread.sleep(1000);
+		WebElement e=driver.findElement(By.xpath("(//span[@class='tile-move-icon'])[2]"));
+		WebElement e1=driver.findElement(By.xpath("(//span[@class='tile-move-icon'])[3]"));
+		Actions ac=new Actions(driver);
+		ac.dragAndDrop(e, e1).perform();
+	}
+
+	@Then("validate the tiles")
+	public void validate_the_tiles() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='messenger-settings-tab-content']")).getText();
+		Assert.assertEquals("Tiles Display\n"
+				+ "Move\n"
+				+ "Hide/Show\n"
+				+ "Chat\n"
+				+ "Admin Dashboard\n"
+				+ "Cattle Call\n"
+				+ "Tm Monitor\n"
+				+ "Help\n"
+				+ "Personal Settings",a);
+	}
+	
+	@Then("click on font and format")
+	public void click_on_font_and_format() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//span[text()='Fonts & Format']")).click();
+	}
+
+	@Then("validate the font and format page")
+	public void validate_the_font_and_format_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='messenger-settings-tab-content']")).getText();
+		Assert.assertEquals("Font Type\n"
+				+ "Poppins\n"
+				+ "(Default)\n"
+				+ "Roboto\n"
+				+ "Helvetica\n"
+				+ "Karla\n"
+				+ "Work Sans\n"
+				+ "PREVIEW\n"
+				+ "Did you ever Hang pictures on your wall?\n"
+				+ "Reference site about Lorem ipsum.\n"
+				+ "Ok, I will check and update.\n"
+				+ "Font Size\n"
+				+ "70%\n"
+				+ "80%\n"
+				+ "90%\n"
+				+ "100%\n"
+				+ "(Default)\n"
+				+ "115%\n"
+				+ "125%\n"
+				+ "135%\n"
+				+ "150%\n"
+				+ "Message Entrybox Icons\n"
+				+ "Show\n"
+				+ "Hide\n"
+				+ "Messaging Format\n"
+				+ "Forkout\n"
+				+ "Read Receipt\n"
+				+ "Voice Messaging", a);
+	}
+
+	@Then("click on roboto")
+	public void click_on_roboto() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='Roboto ']")).click();
+	}
+
+	@Then("click on Helvetica")
+	public void click_on_helvetica() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='Helvetica ']")).click();
+	}
+
+	@Then("click on karla")
+	public void click_on_karla() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='Karla ']")).click();
+	}
+
+	@Then("click on work sans")
+	public void click_on_work_sans() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='Work Sans ']")).click();
+	}
+
+	@Then("click on Poppins")
+	public void click_on_Poppins() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='Poppins ']")).click();
+	}
+	
+	@Then("click on 70%")
+	public void click_on_70() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='70% ']")).click();
+	}
+	
+	@Then("click on 80%")
+	public void click_on_80() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='80% ']")).click();
+	}
+	
+	@Then("click on 90%")
+	public void click_on_90() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='90% ']")).click();
+	}
+	
+	@Then("click on 100%")
+	public void click_on_100() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='100% ']")).click();
+	}
+	
+	@Then("click on 115%")
+	public void click_on_115() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='115% ']")).click();
+	}
+	
+	@Then("click on 125%")
+	public void click_on_125() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='125% ']")).click();
+	}
+	
+	@Then("click on 135%")
+	public void click_on_135() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='135% ']")).click();
+	}
+	
+	@Then("click on 150%")
+	public void click_on_150() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[text()='150% ']")).click();
+	}
+	
+	@Then("switch the messaging format to hide")
+	public void switch_the_messaging_format_to_hide() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[2]")).click();
+	}
+
+	@Then("switch the messaging format to show")
+	public void switch_the_messaging_format_to_show() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[2]")).click();
+	}
+
+	@Then("switch the forkout to hide")
+	public void switch_the_forkout_to_hide() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[3]")).click();
+	}
+
+	@Then("switch the forkout to show")
+	public void switch_the_forkout_to_show() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[3]")).click();
+	}
+
+	@Then("switch the read receipt to hide")
+	public void switch_the_read_receipt_to_hide() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[4]")).click();
+	}
+
+	@Then("switch the read receipt to show")
+	public void switch_the_read_receipt_to_show() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[4]")).click();
+	}
+
+	@Then("switch the voice messaging to hide")
+	public void switch_the_voice_messaging_to_hide() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[5]")).click();
+	}
+
+	@Then("switch the voice messaging to show")
+	public void switch_the_voice_messaging_to_show() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("(//label[@class='switch'])[5]")).click();
+	}
 }
 

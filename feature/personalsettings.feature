@@ -415,4 +415,367 @@ Feature: Personal settings
     And click on layout
     Then change to auto adjust    
     
+  @tag34
+  Scenario: Click on Tiles
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on tiles
+    Then validate the tiles page    
                 
+  @tag35
+  Scenario: Click on Tiles & Switch the cattle call button to hide
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on tiles
+    And switch the cattle call button to hide
+    Then validate the cattle call icon right side in tm app              
+   
+  @tag36
+  Scenario: Click on Tiles & Switch the cattle call button to show
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on tiles
+    And switch the cattle call button to show
+    Then validate the cattle call icon right side in tm app               
+                
+  @tag37
+  Scenario: Click on Tiles & Switch the admin dashboard button to hide
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on tiles
+    And switch the admin dashboard button to hide
+    Then validate the admin dashboard icon right side in tm app  
+    
+  @tag38
+  Scenario: Click on Tiles & Switch the admin dashboard button to show
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on tiles
+    And switch the admin dashboard button to show
+    Then validate the admin dashboard icon right side in tm app  
+    
+  @tag39
+  Scenario: Click on Tiles & Switch the Tm monitor button to hide
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on tiles
+    And switch the Tm monitor button to hide
+    Then validate the Tm monitor icon right side in tm app  
+    
+  @tag40
+  Scenario: Click on Tiles & Switch the Tm monitor button to show
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on tiles
+    And switch the Tm monitor button to show
+    Then validate the Tm monitor icon right side in tm app                      
+                
+  @tag41
+  Scenario: Click on Tiles & Switch the help button to hide
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on tiles
+    And switch the help button to hide
+    Then validate the help icon right side in tm app  
+    
+  @tag42
+  Scenario: Click on Tiles & Switch the help button to show
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on tiles
+    And switch the help button to show
+    Then validate the help icon right side in tm app 
+    
+  @tag43
+  Scenario: Click on Tiles & move the side tabs
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on tiles
+    And move the tabs
+    Then validate the tiles                
+                
+  @tag44
+  Scenario: Click on Fonts and Formats
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then validate the font and format page
+    
+  @tag45
+  Scenario: Click on Fonts and Formats & click on radio button of Roboto in Font type
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on roboto
+    
+  @tag46
+  Scenario: Click on Fonts and Formats & click on radio button of Helvetica in Font type
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on Helvetica  
+    
+  @tag47
+  Scenario: Click on Fonts and Formats & click on radio button of Karla in Font type
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on karla  
+    
+  @tag48
+  Scenario: Click on Fonts and Formats & click on radio button of Work sans in Font type
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on work sans
+    
+  @tag49
+  Scenario: Click on Fonts and Formats & click on radio button of Poppins in Font type
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on Poppins
+      
+  @tag50
+  Scenario: Click on Fonts and Formats & click on radio button of 70% in Font size
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on 70%    
+    
+  @tag51
+  Scenario: Click on Fonts and Formats & click on radio button of 80% in Font size
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on 80%        
+    
+  @tag52
+  Scenario: Click on Fonts and Formats & click on radio button of 90% in Font size
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on 90%    
+    
+  @tag53
+  Scenario: Click on Fonts and Formats & click on radio button of 100% in Font size
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on 100%    
+    
+  @tag54
+  Scenario: Click on Fonts and Formats & click on radio button of 115% in Font size
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on 115%    
+    
+  @tag55
+  Scenario: Click on Fonts and Formats & click on radio button of 125% in Font size
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on 125%    
+    
+  @tag56
+  Scenario: Click on Fonts and Formats & click on radio button of 135% in Font size
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on 135%                
+    
+  @tag57
+  Scenario: Click on Fonts and Formats & click on radio button of 150% in Font size
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then click on 150%      
+    
+  @tag58
+  Scenario: Click on Fonts and Formats & switch the messaging format to hide in Message Entrybox Icons
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then switch the messaging format to hide
+    
+  @tag59
+  Scenario: Click on Fonts and Formats & switch the messaging format to show in Message Entrybox Icons
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then switch the messaging format to show   
+    
+  @tag60
+  Scenario: Click on Fonts and Formats & switch the forkout to hide in Message Entrybox Icons
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then switch the forkout to hide
+    
+  @tag61
+  Scenario: Click on Fonts and Formats & switch the forkout to show in Message Entrybox Icons
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then switch the forkout to show  
+    
+  @tag62
+  Scenario: Click on Fonts and Formats & switch the read receipt to hide in Message Entrybox Icons
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then switch the read receipt to hide
+    
+  @tag63
+  Scenario: Click on Fonts and Formats & switch the read receipt to show in Message Entrybox Icons
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then switch the read receipt to show 
+    
+  @tag64
+  Scenario: Click on Fonts and Formats & switch the voice messaging to hide in Message Entrybox Icons
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then switch the voice messaging to hide
+    
+  @tag65
+  Scenario: Click on Fonts and Formats & switch the voice messaging to show in Message Entrybox Icons
+    Given user has navigated to login page
+    When user enters valid email address "android@tm.com" into email field
+    And user entered valid password "123456" into password field
+    And user clicks on login button
+    Then user should get successfully logged in
+    And click on personal settings tab
+    And click on font and format
+    Then switch the voice messaging to show  
+            
+    
+            
+                    
