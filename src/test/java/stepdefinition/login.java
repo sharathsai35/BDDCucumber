@@ -2787,5 +2787,167 @@ public class login {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("(//label[@class='switch'])[5]")).click();
 	}
-}
+	//user profile page
+	@Then("click on user in recent chat page")
+	public void click_on_user_in_recent_chat_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@data-name='krishna']")).click();
+	}
 
+	@Then("click on profile of user")
+	public void click_on_profile_of_user() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@id='chatUserImage']")).click();
+	}
+
+	@Then("validate the user profile page")
+	public void validate_the_user_profile_page() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='profile-tabs-container']")).getText();
+		Assert.assertEquals("Krishna\n"
+				+ "Personal Details\n"
+				+ "Email\n"
+				+ ":\n"
+				+ "krishna@tm.com\n"
+				+ "Mobile\n"
+				+ ":\n"
+				+ "3143546545\n"
+				+ "Business Details\n"
+				+ "Designation\n"
+				+ ":\n"
+				+ "N/A\n"
+				+ "Company\n"
+				+ ":\n"
+				+ "Tvisha\n"
+				+ "Add to Favorites\n"
+				+ "Mute Notifications", a);
+	}
+	
+	@Then("click on copy icon for email")
+	public void click_on_copy_icon_for_email() throws InterruptedException {
+		Thread.sleep(1000);
+		WebElement e=driver.findElement(By.xpath("//span[@class='user-email browser-link']"));
+		WebElement e1=driver.findElement(By.xpath("//span[@class='user-profile-email-copy']"));
+		Actions ac=new Actions(driver);
+		ac.moveToElement(e).click(e1).perform();
+	}
+
+	@Then("validate the toast msg of email copied")
+	public void validate_the_toast_msg_of_copied() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='snackbar']")).getText();
+		Assert.assertEquals("Copied!", a);
+	}
+
+	@Then("click on copy icon for mobile")
+	public void click_on_copy_icon_for_mobile() throws InterruptedException {
+		Thread.sleep(1000);
+		WebElement e=driver.findElement(By.xpath("//span[@class='user-mobile']"));
+		WebElement e1=driver.findElement(By.xpath("//span[@class='user-profile-mobile-copy']"));
+		Actions ac=new Actions(driver);
+		ac.moveToElement(e).click(e1).perform();
+	}
+
+	@Then("validate the toast msg of mobile copied")
+	public void validate_the_toast_msg_of_mobile_copied() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@id='snackbar']")).getText();
+		Assert.assertEquals("Copied!", a);
+	}
+	
+	@Then("click on image in user profile")
+	public void click_on_image_in_user_profile() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@class='user-avatar image-viewer']")).click();
+	}
+
+	@Then("validate the image viewer of the user")
+	public void validate_the_image_viewer_of_the_user() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='image-viewer']")).getText();
+		Assert.assertEquals("", a);
+	}
+	
+	@Then("click on close icon in user image")
+	public void click_on_close_icon_in_user_image() throws InterruptedException {
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath("//div[@class='close-modal-btn']")).click();
+	}
+	
+	@Then("click on favourite icon in user profile")
+	public void click_on_favourite_icon_in_user_profile() throws InterruptedException {
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[2]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div/div[7]/span[1]")).click();
+	}
+
+	@Then("validate the favourite text")
+	public void validate_the_favourite_text() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//span[text()='Remove from Favorites']")).getText();
+		Assert.assertEquals("Remove from Favorites", a);
+	}
+
+	@Then("Remove the favourite in user profile")
+	public void remove_the_favourite_in_user_profile() throws InterruptedException {
+		Thread.sleep(1000);
+	    driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[2]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div/div[7]/span[1]")).click();
+	}
+
+	@Then("validate the removed favourite text")
+	public void validate_the_removed_favourite_text() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//span[text()='Add to Favorites']")).getText();
+		Assert.assertEquals("Add to Favorites", a);
+	}
+
+	@Then("click on mute icon in user profile")
+	public void click_on_mute_icon_in_user_profile() throws InterruptedException {
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[2]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div/div[8]/span[1]")).click();
+	}
+
+	@Then("validate the mute text")
+	public void validate_the_mute_text() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//span[text()='UnMute Notifications']")).getText();
+		Assert.assertEquals("UnMute Notifications", a);
+	}
+
+	@Then("Remove the mute in user profile")
+	public void remove_the_mute_in_user_profile() throws InterruptedException {
+		Thread.sleep(1000);
+	    driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[2]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div/div[8]/span[1]")).click();
+	}
+
+	@Then("validate the removed mute text")
+	public void validate_the_removed_mute_text() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//span[text()='Mute Notifications']")).getText();
+		Assert.assertEquals("Mute Notifications", a);
+	}
+	
+	@Then("click on user1 in recent chat page")
+	public void click_on_user1_in_recent_chat_page() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@data-name='Admin']")).click();
+	}
+	
+	@Then("click on profile of user1")
+	public void click_on_profile_of_user1() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@id='chatUserImage']")).click();
+	}
+
+	@Then("click on pin tab")
+	public void click_on_pin_tab() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@data-tab='5']")).click();
+	}
+
+	@Then("validate pin tab")
+	public void validate_pin_tab() throws InterruptedException {
+		Thread.sleep(1000);
+		String a=driver.findElement(By.xpath("//div[@class='info-text']")).getText();
+		Assert.assertEquals("No Pinned Messages!", a);
+	}
+}

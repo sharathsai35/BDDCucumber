@@ -5,7 +5,8 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="./feature/personalsettings.feature",
+@CucumberOptions(features="./feature/userprofile.feature",
+//@CucumberOptions(features="./feature/personalsettings.feature",
 //@CucumberOptions(features="./feature/homepage.feature",
 //@CucumberOptions(features="./feature/searchuserinadduser.feature",
 //@CucumberOptions(features="./feature/adduser.feature",
@@ -19,7 +20,7 @@ import io.cucumber.junit.CucumberOptions;
 //@CucumberOptions(features = "./feature/login3.feature",
 glue = { "stepdefinition", "hooks" },
 publish = true,
-plugin= {"pretty","html:target/loginpage/personalsettings.html"}
+plugin= {"pretty","html:target/loginpage/userprofile.html"}
 )
 public class MyRunner {
 
